@@ -14,14 +14,21 @@
 ActiveRecord::Schema.define(:version => 20121208211254) do
 
   create_table "comments", :force => true do |t|
+    t.integer  "teacher_id"
+    t.integer  "user_id"
+    t.string   "comment"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "courses", :force => true do |t|
     t.integer  "course_num"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "teacher_id"
+    t.integer  "department_id"
+    t.integer  "school_id"
+    t.integer  "comment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "departments", :force => true do |t|
@@ -48,13 +55,6 @@ ActiveRecord::Schema.define(:version => 20121208211254) do
   create_table "teachers", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "teaches", :force => true do |t|
-    t.integer  "teacher_id"
-    t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

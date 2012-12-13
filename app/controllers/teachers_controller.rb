@@ -43,7 +43,7 @@ class TeachersController < ApplicationController
   # GET /teachers/new.json
   def new
     @user = @current_user
-    @teacher = Teacher.new
+    @teacher = Teacher.build(params[:employment])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -59,11 +59,11 @@ class TeachersController < ApplicationController
   # POST /teachers
   # POST /teachers.json
   def create
-    @teacher = Teacher.new(params[:teacher])
-
+    @teacher = Teacher.build(params[:teacher])
     respond_to do |format|
       if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+        Employment.create(:teacher_id => @teacher[:id], :school_id => params[:employment][:school_id])
+        format.html { redirect_to teachers_path(:teacher => @teacher.last_name), notice: 'Teacher was successfully created.' }
         format.json { render json: @teacher, status: :created, location: @teacher }
       else
         format.html { render action: "new" }

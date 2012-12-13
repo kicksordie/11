@@ -11,7 +11,30 @@
     </div>
   <% end %>
 
+
+
+    <div class="ten mobile-three columns">
+     <%= collection_select(:department, :department_id, Department.all, :id, :dept_name, {}, :class => "eight textlbb") %>
+    </div>
+<br />
+<%= text_field_tag :classnum %>
+
+
+
+
+<br />
+<div>
+  <%= f.text_area  :comment,  :cols => "30", :rows => "4" %>
+    <%= f.label :comment, "Discription" %>
+  </div>
+</li>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+
+
+
+</script>

@@ -24,7 +24,8 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-    @comment = Comment.new
+    @comment = Comment.new(params[:info])
+    @user = @current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,6 +45,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        #Course.create(:teacher_id => @teacher[:id], :school_id => params[:employment][:school_id])
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else

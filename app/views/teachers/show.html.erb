@@ -10,6 +10,16 @@
   <%= @teacher.last_name %>
 </p>
 
+<p>
+  <b>School:</b>
+  <% @teacher.schools.each do |t| %>
+  	<%=link_to t.name%>
+  	<%end%>
+</p>
+
+<%= link_to 'Rate/Comment', new_comment_path, :class => "radius button" %>
+
+
 
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>

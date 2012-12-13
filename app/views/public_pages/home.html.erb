@@ -13,9 +13,9 @@
 </dl>
 <ul class="tabs-content contained">
   <li class="active" id="simpleContained1Tab">
-  	<div class="row collapse">
+  	<div class="row collapse clearminwidth">
       <%= form_tag teachers_path, method: :get do %>
-  		<div class="ten mobile-three columns">
+  		<div class="ten mobile-three columns ">
         <%= text_field_tag :teacher, params[:teacher] %>
   		</div>
   		<div class="two mobile-one columns">
@@ -36,7 +36,7 @@
   </li>
 
   <li id="simpleContained3Tab">
-  	<div class="row collapse">
+  	<div class="row collapse clearminwidth">
   		<div class="ten mobile-three columns">
     		<input type="text" />
   		</div>

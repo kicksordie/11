@@ -11,15 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+
+
+  <div class="row">
+    <div class="two mobile-one columns">
+      <label class="right inline">First Name:</label>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :first_name, :class => "eight", :placeholder => "John" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+
+    <div class="row">
+    <div class="two mobile-one columns">
+      <label class="right inline">Last Name:</label>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :last_name, :class => "eight", :placeholder => "Doe" %>
+    </div>
+    <div class="ten mobile-three columns">
+     <%= collection_select(:employment, :school_id, School.all, :id, :name, {}, :class => "eight textlbb") %>
+    </div>
+
   </div>
+
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Teacher", :class => "button radius"%>
   </div>
 <% end %>
+
