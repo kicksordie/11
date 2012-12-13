@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20121208211254) do
 
   create_table "departments", :force => true do |t|
     t.string   "dept_name"
+    t.string   "dept_cont"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
+    session[:return_to] = request.referer
     @user = User.new
 
     respond_to do |format|
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    session[:return_to] = request.referer
     @user = User.find(params[:id])
   end
 
@@ -41,10 +43,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        reset_session
+        session[:user_id] = @user.id
+        format.html { redirect_to session[:return_to], notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to session[:return_to], notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

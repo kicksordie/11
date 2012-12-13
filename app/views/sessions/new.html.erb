@@ -1,0 +1,24 @@
+<h1>Login</h1>
+
+
+
+
+
+
+				<%= form_tag sessions_path do %>
+
+<div class="field">
+					<%= text_field_tag :username, params[:username], :placeholder => "Your Username", :class => "buttontext" %>
+
+  </div>
+
+<div class="field">
+					<%= text_field_tag :password, nil, :type => "password", :placeholder => "Password" %>
+</div>
+<div class="actions">
+
+					<%= submit_tag "Login"%>
+</div>
+				<%end%>
+
+<%= link_to 'Back', root_path %>

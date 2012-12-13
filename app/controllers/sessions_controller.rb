@@ -5,12 +5,13 @@ end
 
 
 def create
+    session[:return_to] = request.referer
 	@user = User.find_by_username(params[:username])
 
 	if @user && @user.authenticate(params[:password])
 		reset_session
     	session[:user_id] = @user.id
-    	redirect_to user_url(@user), :notice => "welcome #{@user.username} you have been logged in!"
+    	redirect_to session[:return_to], :notice => "welcome #{@user.username} you have been logged in!"
   	else
     	flash.now.alert = "Invalid username or password"
     	render "new"

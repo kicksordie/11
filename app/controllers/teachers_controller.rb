@@ -2,7 +2,24 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Teacher.all
+    @user = @current_user
+    @searchvalue
+    @teachers = []
+   
+    if params[:teacher]
+      @searchvalue = params[:teacher]
+      params[:teacher].split(" ").each do |name|
+        @teachers+=Teacher.search(name).all
+      end
+      @teachers.uniq! { |t| t.id }
+    end
+
+    if params[:letter]
+        @searchvalue = params[:letter]
+        @teachers+=Teacher.searchletter(params[:letter]).all
+    end
+
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +30,7 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
+    @user = @current_user
     @teacher = Teacher.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +42,7 @@ class TeachersController < ApplicationController
   # GET /teachers/new
   # GET /teachers/new.json
   def new
+    @user = @current_user
     @teacher = Teacher.new
 
     respond_to do |format|

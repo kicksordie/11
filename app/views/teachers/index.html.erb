@@ -1,25 +1,94 @@
-<h1>Listing teachers</h1>
 
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <dl class="tabs contained">
+  <dd class="active"><a href="#simpleContained1">Search By Teacher Name</a></dd>
+  <dd class="hide-for-small"><a href="#simpleContained2">Alphabetical Search by Last Name</a></dd>
+  <dd class="hide-for-small"><a href="#simpleContained3">Search by  Class</a></dd>
 
-<% @teachers.each do |teacher| %>
-  <tr>
-    <td><%= teacher.first_name %></td>
-    <td><%= teacher.last_name %></td>
-    <td><%= link_to 'Show', teacher %></td>
-    <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-    <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+</dl>
+<ul class="tabs-content contained">
+  <li class="active" id="simpleContained1Tab">
+    <div class="row collapse">
+      <%= form_tag teachers_path, method: :get do %>
+      <div class="ten mobile-three columns">
+        <%= text_field_tag :teacher, params[:teacher] %>
+      </div>
+      <div class="two mobile-one columns">
+        <%= submit_tag "Search", :name => nil, :class => "button expand postfix" %>
+      </div>
+      <%end%>
+  </div>
+  </li>
+
+  <li id="simpleContained2Tab">
+    <div class=" seven row collapse">
+      <ul class="inline-list">
+    <% ('A'..'Z').each do |l| %>
+     <li><h1><%=link_to l, teachers_path(:letter => l) %></h1></li>
+    <%end%>
+  </ul>
+  </div>
+  </li>
+
+  <li id="simpleContained3Tab">
+    <div class="row collapse">
+      <div class="ten mobile-three columns">
+        <input type="text" />
+      </div>
+      <div class="two mobile-one columns">
+        <a class="button expand postfix">Search</a>
+      </div>
+  </div>
+  </li>
+</ul>
+
+
+<h2>Search results for "<%=@searchvalue%>"</h2>
+
+<% if @teachers.blank? != true %>
+
+<table class="twelve">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+      <th>School</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teachers.each do |teach| %>
+    <tr >
+      <td class="textlbb"><%=link_to teach.first_name+" "+teach.last_name, teacher_path(teach.id) %> </td>
+      <td class="textlbb">Department here</td>
+      <td class="textlbb">School here</td>
+      <td class="textlbb">rating here</td>
+    </tr>
+    <%end%>
+  </tbody>
 </table>
 
-<br />
+<%else%>
+<div class="alert-box alert">
+No teachers found
+</div>
+<%end%>
 
-<%= link_to 'New Teacher', new_teacher_path %>
+
+
+<div class="textlbb">
+  Cant find your teacher?<br/>
+  <% if @current_user!=nil %>
+  <br/>
+    <%= link_to 'Add New Teacher', new_teacher_path, :class => "radius button" %>
+    <%else%>
+    <br/>
+    <%= link_to 'Log in', login_path, :class => "radius button" %>  &nbsp;or&nbsp;  <%= link_to 'Sign up', signup_path, :class => "radius button" %> &nbsp; to add a new teacher
+    <%end%>
+  </div>
+
+
+
+
+
+
+

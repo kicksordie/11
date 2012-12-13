@@ -1,13 +1,53 @@
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Welcome To Rate Chico State</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+
+
+
+    	<dl class="tabs contained">
+  <dd class="active"><a href="#simpleContained1">Search By Teacher Name</a></dd>
+  <dd class="hide-for-small"><a href="#simpleContained2">Alphabetical Search by Last Name</a></dd>
+  <dd class="hide-for-small"><a href="#simpleContained3">Search by  Class</a></dd>
+
+</dl>
+<ul class="tabs-content contained">
+  <li class="active" id="simpleContained1Tab">
+  	<div class="row collapse">
+      <%= form_tag teachers_path, method: :get do %>
+  		<div class="ten mobile-three columns">
+        <%= text_field_tag :teacher, params[:teacher] %>
+  		</div>
+  		<div class="two mobile-one columns">
+        <%= submit_tag "Search", :name => nil, :class => "button expand postfix" %>
+  		</div>
+      <%end%>
+	</div>
+  </li>
+
+  <li id="simpleContained2Tab">
+  	<div class=" seven row collapse">
+      <ul class="inline-list">
+    <% ('A'..'Z').each do |l| %>
+     <li><h1><%=link_to l, teachers_path(:letter => l) %></h1></li>
+    <%end%>
+  </ul>
+	</div>
+  </li>
+
+  <li id="simpleContained3Tab">
+  	<div class="row collapse">
+  		<div class="ten mobile-three columns">
+    		<input type="text" />
+  		</div>
+  		<div class="two mobile-one columns">
+    		<a class="button expand postfix">Search</a>
+  		</div>
+	</div>
+  </li>
+</ul>
+
+<div class="textlbb"> Search by teacher or class</div>
+
+
+

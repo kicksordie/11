@@ -1,68 +1,55 @@
 
 <nav class="top-bar">
 
-  <ul>
-    <li class="name"><h1><a href="#">Title</a></h1></li>
-    <li class="toggle-topbar"><a href="#"></a></li>
-  </ul>
+    <ul>
+      <li class="name"><h1><a href="#"></a></h1></li>
+      <li class="toggle-topbar"><a href="#"></a></li>
+    </ul>
 
-
-
-      <section>
+    <section>
         <!-- Left Nav Section -->
-
-        
-
-
-
 
 
         <!-- Right Nav Section -->
-      <% if @current_user.guest == false %>
+      <% if @current_user!=nil %>
+
+        <!-- User Logged in -->
         <ul class="right">
           <li class="divider show-for-medium-and-up"></li>
-          <li class="has-dropdown">
-            <a href="#">Hello</a>
+            <li class="has-dropdown">
+            <a href="#">Account</a>
             <ul class="dropdown">
-              <li><label>Section Name</label></li>
-              <li><a href="#" class="">Level 1</a></li>
-              <li><a href="#">Dropdown Option</a></li>
-              <li><a href="#">Dropdown Option</a></li>
+              <li><label>Settings</label></li>
+              <li><%=link_to "Edit Profile", edit_user_path(@current_user)%></li>
+              <li><%=link_to "Logout", logout_path, :method => :delete%></li>
               <li class="divider"></li>
-              <li><label>Section Name</label></li>
-              <li><a href="#">Dropdown Option</a></li>
-              <li><a href="#">Dropdown Option</a></li>
-              <li><a href="#">Dropdown Option</a></li>
-              <li class="divider"></li>
-              <li><a href="#">See all &rarr;</a></li>
+              <li><label>Ratings</label></li>
+              <li><%=link_to "View my rating" %></li>
+              <li><%=link_to "View teachers I have rated" %></li>
             </ul>
           </li>
         </ul>
 
+        <ul class="right">
+          <li class="name textcw">Welcome <%= @user.username %>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        </ul>
 
       <% else %>
 
+        <!-- No User logged in -->
         <ul class="right">
           <li class="divider show-for-medium-and-up"></li>
-          <li class="has-dropdown">
-            <a href="#">Sign Up</a>
-            <ul class="dropdown">
-              <%= form_tag sessions_path do %>
-                <li class="search"><%= text_field_tag :username, params[:username], :placeholder => "Your Username", :class => "buttontext" %></li>
-                <li class="search"><%= text_field_tag :password, nil, :type => "password", :placeholder => "Password" %></li>
-                <li class="has-button"><%= submit_tag "Login"%></li>
-              <%end%>
-            </ul>
-          </li>
- <li class="divider show-for-medium-and-up"></li>
-    <li class="name"><h1><a href="#">Title</a></h1></li>
-
-
-
+          <li><%=link_to "Create Account", signup_path %></li>
         </ul>
 
+        <ul class="right">
+          <li class="divider show-for-medium-and-up"></li>
+          <li><%=link_to "Log In", login_path%></li>
+        </ul>
 
-        <%end%>
-
-      </section>
+                <ul class="right">
+          <li class="name textcw">Welcome Guest&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        </ul>
+      <%end%>
+    </section>
     </nav>

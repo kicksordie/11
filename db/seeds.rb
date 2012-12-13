@@ -8,3 +8,18 @@
 
 user = User.create([{username: 'guest', admin: 'false', guest: 'true'}])
 
+teacher = Teacher.create([{first_name: 'Tyson', last_name: 'Henry'}, 
+						  {first_name: 'Chris', last_name: 'Morris'},
+						  {first_name: 'David', last_name: 'Zeichick'},
+						  {first_name: 'Todd', last_name: 'Gibson'},
+						  {first_name: 'Anne', last_name: 'Keuneke'},
+						  {first_name: 'Melody', last_name: 'Stapleton'},
+						  {first_name: 'Adam', last_name: 'Manzanares'},
+						  {first_name: 'Seung-Bae', last_name: 'Im'},
+						  {first_name: 'Len', last_name: 'Fisk'},
+						  {first_name: 'Judith', last_name: 'Challinger'}])
+
+department = Department.create([{dept_name: 'Computer Science', dept_cont: 'CSCI'},
+								{dept_name: 'Computer Information Systems', dept_cont: 'CINS'}])
+
+

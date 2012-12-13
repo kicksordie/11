@@ -25,10 +25,15 @@ header {
 
 .textcw {
 	color:white;
+	font-weight: bold;
+}
+
+.textlbb {
+	font-size: 18px;
 
 }
 
-.navcustom{
+.navcustom {
 	border-radius: 5px 5px 0 0;
 }
 
@@ -38,7 +43,10 @@ header {
 
 	padding: 20px;
 	padding-top: 100px;
-	border-radius: 0 0 5px 5px;
+	border-radius: 0 0 10px 10px;
+	border-width: 5px;
+	border-style:none double double;
+	border-color: black;
 
 	-moz-box-shadow: 10px 10px 5px #888;
 	-webkit-box-shadow: 10px 10px 5px #888;
@@ -61,4 +69,9 @@ header {
 	-webkit-box-shadow: 10px 10px 5px #888;
 	box-shadow: 10px 10px 5px #888;
 
+}
+
+.lastslot{
+
+	background-color: white;
 }
