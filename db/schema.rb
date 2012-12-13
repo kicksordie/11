@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(:version => 20121213170524) do
     t.integer  "course_id"
     t.integer  "user_id"
     t.string   "comment"
+    t.integer  "org1"
+    t.integer  "org2"
+    t.integer  "org3"
+    t.boolean  "english"
+    t.integer  "com1"
+    t.integer  "com2"
+    t.integer  "com3"
+    t.integer  "int1"
+    t.integer  "int2"
+    t.integer  "int3"
+    t.integer  "diff1"
+    t.integer  "diff2"
+    t.integer  "diff3"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
