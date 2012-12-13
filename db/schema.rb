@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208211254) do
+ActiveRecord::Schema.define(:version => 20121213170524) do
 
   create_table "comments", :force => true do |t|
     t.integer  "teacher_id"
     t.integer  "user_id"
-    t.string   "comment"
+    t.string   "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20121208211254) do
     t.integer  "teacher_id"
     t.integer  "department_id"
     t.integer  "school_id"
-    t.integer  "comment_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -41,6 +40,14 @@ ActiveRecord::Schema.define(:version => 20121208211254) do
   create_table "employments", :force => true do |t|
     t.integer  "teacher_id"
     t.integer  "school_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.string   "comment"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

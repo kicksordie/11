@@ -1,5 +1,7 @@
 Ratechicostate::Application.routes.draw do
-  resources :comments
+
+
+
 
   resources :departments
 
@@ -9,9 +11,15 @@ Ratechicostate::Application.routes.draw do
 
   resources :schools
 
-  resources :courses
 
-  resources :teachers
+
+  resources :teachers do
+    resources :courses do
+        resources :ratings
+      end
+    end
+
+
 
   resources :users,             :except => [:index,
                                             :new]

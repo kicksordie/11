@@ -3,8 +3,9 @@ class Teacher < ActiveRecord::Base
 
   has_many :schools, :through => :employments
   has_many :employments, :dependent => :destroy
-  has_many :comments, :through => :courses
-  has_many :courses, :dependent => :destroy
+  has_many :courses
+  has_many :ratings, :through => :courses , :dependent => :destroy
+
 
 
     def self.search search_term

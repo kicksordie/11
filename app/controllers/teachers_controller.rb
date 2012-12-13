@@ -43,7 +43,7 @@ class TeachersController < ApplicationController
   # GET /teachers/new.json
   def new
     @user = @current_user
-    @teacher = Teacher.build(params[:employment])
+    @teacher = Teacher.new(params[:employment])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -59,7 +59,7 @@ class TeachersController < ApplicationController
   # POST /teachers
   # POST /teachers.json
   def create
-    @teacher = Teacher.build(params[:teacher])
+    @teacher = Teacher.new(params[:teacher])
     respond_to do |format|
       if @teacher.save
         Employment.create(:teacher_id => @teacher[:id], :school_id => params[:employment][:school_id])

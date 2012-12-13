@@ -13,19 +13,21 @@
 
 
 
+  <!--
     <div class="ten mobile-three columns">
-     <%= collection_select(:department, :department_id, Department.all, :id, :dept_name, {}, :class => "eight textlbb") %>
+     <%= collection_select(:course, :department_id, Department.all, :id, :dept_name, {}, :class => "eight textlbb") %>
     </div>
+
 <br />
 <%= text_field_tag :classnum %>
 
 
-
+-->
 
 <br />
 <div>
-  <%= f.text_area  :comment,  :cols => "30", :rows => "4" %>
-    <%= f.label :comment, "Discription" %>
+  <%= f.text_area  :notes,  :cols => "30", :rows => "4" %>
+    <%= f.label :notes, "Discription" %>
   </div>
 </li>
   <div class="actions">
@@ -33,8 +35,3 @@
   </div>
 <% end %>
 
-<script type="text/javascript">
-
-
-
-</script>

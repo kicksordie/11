@@ -2,7 +2,9 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @teacher = Teacher.find_by_id(params[:teacher_id])
+    @courses = @teacher.courses.all
+    @user = @current_user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,9 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @course = Course.find(params[:id])
+    @teacher = Teacher.find_by_id(params[:teacher_id])
+    @course = Course.find_by_teacher_id(params[:teacher_id])
+    @user = @current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +28,11 @@ class CoursesController < ApplicationController
   # GET /courses/new
   # GET /courses/new.json
   def new
-    @course = Course.new
+    @teacher = Teacher.find_by_id(params[:teacher_id])
+    
+    @course = @teacher.courses.build
+    
+    @user = @current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +48,12 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(params[:course])
+    @teacher = Teacher.find_by_id(params[:teacher_id])
+    @course = @teacher.courses.build(params[:course])
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to [@teacher, @course], notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }

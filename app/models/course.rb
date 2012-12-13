@@ -5,10 +5,9 @@ class Course < ActiveRecord::Base
   belongs_to :teacher
   has_one :school
   has_one :department
+  has_many :ratings
   accepts_nested_attributes_for :department
   accepts_nested_attributes_for :school
-  has_many :comments
-
 
 
      def self.search search_term

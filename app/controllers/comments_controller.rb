@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   # GET /comments/1.json
   def show
     @comment = Comment.find(params[:id])
-
+    @user = @current_user
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @comment }
@@ -24,13 +24,10 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-    @comment = Comment.new(params[:info])
+    @teacher = Teacher.find_by_id(params[:teacher])
     @user = @current_user
+    @comment = @teacher.comments.build
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @comment }
-    end
   end
 
   # GET /comments/1/edit
@@ -41,11 +38,15 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = @teacher.comments.build(params[:comment])
 
     respond_to do |format|
       if @comment.save
-        #Course.create(:teacher_id => @teacher[:id], :school_id => params[:employment][:school_id])
+        #Course.create(:course_num => params[:course][:classnum], 
+
+
+
+          #:department_id => params[:course][:department_id])
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else

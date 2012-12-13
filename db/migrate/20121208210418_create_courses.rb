@@ -5,7 +5,6 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :teacher_id
       t.integer :department_id
       t.integer :school_id
-      t.integer :comment_id
 
       t.timestamps
     end

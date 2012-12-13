@@ -1,10 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Course num:</b>
-  <%= @course.course_num %>
-</p>
+
+<% if @course.blank? != true %>
+
+<table class="twelve">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+      <th>School</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%  @teacher.courses.each do |c| %>
+    <tr >
+      <td class="textlbb"><%=link_to c.course_num, teacher_course_path(@teacher, c)%> </td>
+      <td class="textlbb">Department here</td>
+      <td class="textlbb">School here</td>
+      <td class="textlbb">rating here</td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+<%= link_to 'Add Course', new_teacher_course_path(@teacher) %>
+<%else%>
+<div class="alert-box alert">
+No courses found
+<%= link_to 'Add Course', new_teacher_course_path(@teacher) %>
+</div>
+<%end%>
 
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>

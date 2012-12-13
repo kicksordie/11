@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <b>First name:</b>
@@ -17,7 +17,12 @@
   	<%end%>
 </p>
 
-<%= link_to 'Rate/Comment', new_comment_path, :class => "radius button" %>
+<% @teacher.ratings.each do |r| %>
+<div class="panel">
+	<%=r.comment%>
+	</div>
+<%end%>
+<%= link_to 'Rate/Comment', teacher_courses_path(@teacher), :class => "radius button" %>
 
 
 
