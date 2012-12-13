@@ -18,9 +18,15 @@
 .main {
 
 	margin-top: 8em;
+
 }
 
 header {
+
+}
+
+div.alert-box {
+padding-left: 50px;
 
 }
 
@@ -47,7 +53,7 @@ header {
 .content {
 
 	padding: 20px;
-	padding-top: 100px;
+	padding-top: 8em;
 	border-radius: 0 0 10px 10px;
 	border-width: 5px;
 	border-style:none double double;
@@ -57,6 +63,8 @@ header {
 	-webkit-box-shadow: 10px 10px 5px #888;
 	box-shadow: 10px 10px 5px #888;
 	background: white;
+	margin-bottom:8em;
+
 
 }
 
@@ -74,18 +82,23 @@ header {
 }
 
 .logo {
-	height:100px;
-	width: 300px;
-	position:absolute;
-	top:-26px;
-	left:-60px;
 
-	background: white;
-	z-index: -1;
-	-webkit-transform:rotate(-45deg);
-		-moz-box-shadow: 10px 10px 5px #888;
-	-webkit-box-shadow: 10px 10px 5px #888;
-	box-shadow: 10px 10px 5px #888;
+
+
+
+	height: 256px;
+width: 256px;
+position: absolute;
+top: -99px;
+left: -106px;
+z-index: 1;
+-webkit-transform: rotate(-25deg);
+-moz-box-shadow: 10px 10px 5px #888;
+-webkit-box-shadow: 10px 10px 5px #888;
+box-shadow: 10px 10px 5px #888;
+background: white;
+
+
 
 }
 

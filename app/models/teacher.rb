@@ -18,5 +18,18 @@ class Teacher < ActiveRecord::Base
   		where(['last_name LIKE ?', "#{search_term}%"])
 	end
 
+  def calcrate ratings
+    return scoped unless ratings.present?
+
+
+    
+  
+
+
+
+  end 
+
+
+
 
 end

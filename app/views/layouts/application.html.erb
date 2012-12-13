@@ -28,13 +28,17 @@
 <body>
 	<div class="background"></div>
 
-			<%=link_to "logo home", root_path %>
+			&nbsp;
 
 			<div class="eight columns centered">
 				<div class="contain-to-grid main">
 					<%= render 'layouts/header' %>
 				</div>
-				<div class="logo"><%=link_to "logo home", root_path %></div>
+
+				<%= link_to (image_tag "logo.svg"),
+				root_path, :class => "logo"%>
+
+
 				<div class="content">
 				<% if flash[:notice] %>
 					<div class="contain-to-grid alert-box">
@@ -44,7 +48,7 @@
 				<% end %>
   					<%= yield %>
   				</div>
-  				params: <%= @current_user.inspect %> 
+  				<!-- params: <%= @current_user.inspect %> 
 			</div>
 
 

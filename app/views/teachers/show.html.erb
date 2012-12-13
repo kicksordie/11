@@ -6,12 +6,36 @@
 
 
 
+
+
   <b>School:</b>
   <% @teacher.schools.each do |t| %>
   	<%=link_to t.name%>
   	<%end%>
+
+  	<table class="twelve">
+	<thead>
+		<tr>
+			<td><h4>Organization</h4></td>
+			<td><h4>Communication</h4></td>
+			<td><h4>Difficulty</h4></td>
+			<td><h4>Global Rating</h4></td>
+		</tr>
+	</thead>
+  <tbody>
+  	<tr>
+<td><h2><%=@orgrating.round(2)%> / 5</h1></td>
+<td><h2><%=@comrating.round(2)%> / 5</h1></td>
+<td><h2><%=@diffrating.round(2)%> / 5</h1></td>
+<td><h1><%=@globalrating.round(2)%> / 5</h1></td>
+</tr>
+  </tbody>
+</table>
 <%= link_to 'Rate/Comment', teacher_courses_path(@teacher), :class => "radius button" %>
 </div>
+
+
+
 
 <% @teacher.ratings.each do |r| %>
 <div class="panel">
@@ -21,6 +45,3 @@
 
 
 
-
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>

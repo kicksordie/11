@@ -33,6 +33,25 @@ class TeachersController < ApplicationController
     @user = @current_user
     @teacher = Teacher.find(params[:id])
 
+
+    @orgrating = ((@teacher.ratings.average(:org1)+
+                    @teacher.ratings.average(:org2)+
+                    @teacher.ratings.average(:org3))/3)
+
+        @comrating = ((@teacher.ratings.average(:com1)+
+                    @teacher.ratings.average(:com2)+
+                    @teacher.ratings.average(:com3))/3)
+
+            @diffrating = ((@teacher.ratings.average(:diff1)+
+                    @teacher.ratings.average(:diff2)+
+                    @teacher.ratings.average(:diff3))/3)
+
+          @globalrating = (@orgrating+@comrating+(5-@diffrating))/3
+
+
+
+
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @teacher }
